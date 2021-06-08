@@ -1,6 +1,8 @@
 project "ImGui"
 		kind "StaticLib"
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 
 
 		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -16,15 +18,13 @@ project "ImGui"
 			"imgui_internal.h",
 			"imstb_rectpack.h",
 			"imstb_textedit.h",
-      "imgui_tables.cpp",
+            "imgui_tables.cpp",
 			"imstb_truetype.h",
 			"imgui_widgets.cpp"
 		}
 
-			filter "system:windows"
-				systemversion "latest"
-				cppdialect "C++17"
-				staticruntime "on"
+		filter "system:windows"
+			systemversion "latest"
 
 		filter "configurations:Debug"
 				runtime "Debug"
@@ -33,4 +33,3 @@ project "ImGui"
 		filter "configurations:Release"
 				runtime "Release"
 				optimize "on"
-				buildoptions "/MT"
